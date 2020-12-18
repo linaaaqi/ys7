@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":156:{a:2:{s:7:"defects";a:1:{s:42:"Tests\YS7ClientTest::testGenerateYS7Client";i:4;}s:5:"times";a:1:{s:42:"Tests\YS7ClientTest::testGenerateYS7Client";d:0.223;}}}

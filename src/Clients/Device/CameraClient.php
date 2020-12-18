@@ -1,0 +1,65 @@
+<?php
+
+namespace Losgif\YS7\Clients\Device;
+
+use Losgif\YS7\Clients\BaseClient;
+
+/**
+ * https://open.ys7.com/doc/zh/book/index/device_select.html
+ */
+class CameraClient extends BaseClient
+{
+    /**
+     * 设备抓拍图片
+     * https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api4
+     *
+     * @param  mixed  $deviceSerial
+     * @param  int  $channelNo
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function capture($deviceSerial, $channelNo = 1)
+    {
+        return $this->sendWithAuth('/api/lapp/device/capture', [
+            'deviceSerial' => $deviceSerial,
+            'channelNo'    => $channelNo
+        ])->json()['data']['picUrl'];
+    }
+
+    /**
+     * 获取摄像头列表
+     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api3
+     *
+     * @param  int  $pageStart
+     * @param  int  $pageSize
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function list($pageStart = 0, $pageSize = 50)
+    {
+        return $this->sendWithAuth('/api/lapp/camera/list', [
+            'pageStart' => $pageStart,
+            'pageSize'  => $pageSize,
+        ])->json()['data'];
+    }
+
+    /**
+     * 获取设备状态信息
+     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api5
+     *
+     * @param  mixed  $deviceSerial
+     * @param  int  $channelNo
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function status($deviceSerial, $channelNo = 1)
+    {
+        return $this->sendWithAuth('/api/lapp/device/status/get', [
+            'deviceSerial' => $deviceSerial,
+            'channelNo'    => $channelNo
+        ])->json()['data'];
+    }
+}
