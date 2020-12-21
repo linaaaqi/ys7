@@ -5,7 +5,6 @@ namespace Losgif\YS7;
 
 use Losgif\YS7\Auth\BaseAuth;
 use Losgif\YS7\Clients\BaseClient;
-use Losgif\YS7\Traits\RecursiveClientMixin;
 
 /**
  * YS7Client
@@ -28,8 +27,6 @@ use Losgif\YS7\Traits\RecursiveClientMixin;
  */
 class YS7Client extends BaseClient
 {
-    use RecursiveClientMixin;
-
     protected $config
         = [
             'base_uri' => 'https://open.ys7.com',
@@ -51,12 +48,9 @@ class YS7Client extends BaseClient
      * YS7Client constructor.
      *
      * @param  \Losgif\YS7\Auth\BaseAuth  $auth
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function __construct(BaseAuth $auth)
     {
         parent::__construct($auth, $this->config);
-        $this->token()->getToken($auth);
     }
 }

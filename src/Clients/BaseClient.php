@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use Losgif\YS7\Auth\BaseAuth;
 use Losgif\YS7\Exceptions\YS7BadResponseException;
 use Losgif\YS7\Message\Response;
-use Psr\Http\Message\ResponseInterface;
+use Losgif\YS7\Traits\RecursiveClientMixin;
 
 /**
  * Class BaseClient
@@ -19,6 +19,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class BaseClient
 {
+    use RecursiveClientMixin;
+
     protected $auth;
 
     private $httpClient;
