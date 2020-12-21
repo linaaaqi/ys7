@@ -28,8 +28,6 @@ class TokenClient extends BaseClient
         $auth->setAccessToken($data['accessToken']);
         $auth->setExpireTime($data['expireTime']);
 
-        var_dump($auth);
-
         return $auth;
     }
 }
