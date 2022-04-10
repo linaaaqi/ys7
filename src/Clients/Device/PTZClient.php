@@ -2,7 +2,6 @@
 namespace Losgif\YS7\Clients\Device;
 
 use Losgif\YS7\Clients\BaseClient;
-use Losgif\YS7\Enum\PTZ;
 
 /**
  * 云台
@@ -27,7 +26,7 @@ class PTZClient extends BaseClient
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function start($deviceSerial, $direction, $channelNo = 1, $speed = PTZ::SPEED_NORMAL)
+    public function start($deviceSerial, $direction, $channelNo = 1, $speed = 1)
     {
         $this->sendWithAuth('/api/lapp/device/ptz/start', [
             'deviceSerial' => $deviceSerial,
